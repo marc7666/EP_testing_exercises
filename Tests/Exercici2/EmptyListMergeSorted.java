@@ -25,21 +25,17 @@ public class EmptyListMergeSorted {
     void emptyListTest() {
 
         Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    merge.mergeSorted(list1, list2);
-                });
+                () -> merge.mergeSorted(list1, list2));
         assertEquals("Empty list", exception.getMessage());
     }
 
     @Test
-    void emtyList2() {
+    void emptyList2() {
         list1 = new ArrayList<>();
         list2 = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
         Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    merge.mergeSorted(list1, list2);
-                });
+                () -> merge.mergeSorted(list1, list2));
         assertEquals("Empty list", exception.getMessage());
     }
 }

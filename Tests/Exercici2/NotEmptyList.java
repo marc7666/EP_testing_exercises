@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class NotEptyList {
+public class NotEmptyList{
     List<Integer> list1;
     List<Integer> list2;
     Merger merge;
@@ -24,4 +24,5 @@ public class NotEptyList {
         List<Integer> result = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19);
         assertEquals(result, merge.mergeSorted(list1, list2));
     }
+
 }
