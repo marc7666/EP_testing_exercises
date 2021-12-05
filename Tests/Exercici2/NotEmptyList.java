@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class NotEmptyList{
+public class NotEmptyList {
     List<Integer> list1;
     List<Integer> list2;
     Merger merge;
