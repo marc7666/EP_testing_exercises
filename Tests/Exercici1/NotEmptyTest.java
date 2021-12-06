@@ -1,7 +1,7 @@
 package Exercici1;
 
-import Exercici1.Exceptions.WordWithDefinitionException;
-import Exercici1.Exceptions.WordWithoutDefinitionException;
+import Exercici1.Exceptions.DefinedException;
+import Exercici1.Exceptions.NotDefinedException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ public class NotEmptyTest implements NotEmptyDictionary {
     private DictionaryImpl dictionary;
 
     @BeforeEach
-    void setup() throws WordWithDefinitionException {
+    void setup() throws DefinedException {
         dictionary = new DictionaryImpl();
         dictionary.defineWord("Car", "A road vehicle with an engine, four wheels, and seats for a small number of people");
         dictionary.defineWord("Friend", "null");
@@ -22,7 +22,7 @@ public class NotEmptyTest implements NotEmptyDictionary {
 
     @Override
     @Test
-    public void getExistentWord() throws WordWithoutDefinitionException {
+    public void getExistentWord() throws NotDefinedException {
         List<String> aux = List.of("A road vehicle with an engine, four wheels, and seats for a small number of people");
         assertEquals(aux, dictionary.getDefinitions("Car"));
     }
@@ -30,14 +30,14 @@ public class NotEmptyTest implements NotEmptyDictionary {
     @Override
     @Test
     public void defineExistentWordWithDefinition() {
-        assertThrows(WordWithDefinitionException.class,
+        assertThrows(DefinedException.class,
                 () -> dictionary.defineWord("Car", "A road vehicle with an engine, four wheels, and seats for a small number of people"));
 
     }
 
     @Override
     @Test
-    public void defineExistentWord() throws WordWithDefinitionException, WordWithoutDefinitionException {
+    public void defineExistentWord() throws DefinedException, NotDefinedException {
         dictionary.defineWord("Friend", "A person who you know well and who you like a lot, but who is usually not a member of your family");
         List<String> aux = List.of("A person who you know well and who you like a lot, but who is usually not a member of your family");
         assertEquals(aux, dictionary.getDefinitions("Friend"));

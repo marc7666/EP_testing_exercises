@@ -1,7 +1,7 @@
 package Exercici1;
 
-import Exercici1.Exceptions.WordWithDefinitionException;
-import Exercici1.Exceptions.WordWithoutDefinitionException;
+import Exercici1.Exceptions.DefinedException;
+import Exercici1.Exceptions.NotDefinedException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +20,7 @@ public class EmptyTest implements EmptyDictionary {
 
     @Override
     @Test
-    public void defineNewWord() throws WordWithDefinitionException, WordWithoutDefinitionException {
+    public void defineNewWord() throws DefinedException, NotDefinedException {
         List<String> aux = List.of("Armed fighting between two or more countries or groups");
         dictionary.defineWord("War", "Armed fighting between two or more countries or groups");
         assertEquals(aux, dictionary.getDefinitions("War"));
@@ -30,7 +30,7 @@ public class EmptyTest implements EmptyDictionary {
     @Override
     @Test
     public void getTheWord(){
-        assertThrows(WordWithoutDefinitionException.class,
+        assertThrows(NotDefinedException.class,
                 () -> dictionary.getDefinitions("War"));
     }
 }
