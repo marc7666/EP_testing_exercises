@@ -8,8 +8,8 @@ public interface NotEmptyReceiptInterface {
     void addLineTest() throws IsClosedException;
 
     @Test
-    void addTaxesTest();
+    void addTaxesTest() throws IsClosedException;
 
     @Test
-    void getTotalTest();
+    void getTotalTest() throws IsClosedException;
 }
