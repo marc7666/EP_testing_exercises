@@ -1,7 +1,7 @@
-package Exercici1;
+package Exercise1;
 
-import Exercici1.Exceptions.DefinedException;
-import Exercici1.Exceptions.NotDefinedException;
+import Exercise1.Exceptions.DefinedException;
+import Exercise1.Exceptions.NotDefinedException;
 
 import java.util.ArrayList;
 import java.util.HashMap;

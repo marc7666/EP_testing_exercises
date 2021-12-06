@@ -1,4 +1,4 @@
-package Exercici2;
+package Exercise2;
 
 import acm.program.CommandLineProgram;
 
