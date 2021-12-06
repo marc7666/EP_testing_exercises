@@ -33,7 +33,7 @@ public class ClosedReceiptTest implements ClosedReceipt{
 
     @Override
     @Test
-    public void getTotalTest() {
+    public void closedGetTotalTest() {
         assertEquals(BigDecimal.valueOf(0, 2), receipt.getTotal());
     }
 }

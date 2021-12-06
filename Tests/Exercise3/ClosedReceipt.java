@@ -10,5 +10,5 @@ public interface ClosedReceipt {
     void closedAddTaxesTest();
 
     @Test
-    void getTotalTest();
+    void closedGetTotalTest();
 }
