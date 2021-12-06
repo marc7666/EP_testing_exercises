@@ -1,7 +1,6 @@
 package Exercise3;
 
 import Exercise3.Exceptions.IsClosedException;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,7 +46,6 @@ public class NotEmptyReceiptTest implements NotEmptyReceiptInterface {
         adding();
         BigDecimal percent = new BigDecimal("21.00");
         receipt.addTexes(percent);
-        BigDecimal total = new BigDecimal("44.47");
     }
 
 
