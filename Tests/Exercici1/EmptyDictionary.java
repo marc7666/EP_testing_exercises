@@ -1,12 +1,12 @@
 package Exercici1;
 
-import Exercici1.Exceptions.AlreadyDefinedException;
-import Exercici1.Exceptions.NotDefinedException;
+import Exercici1.Exceptions.WordWithDefinitionException;
+import Exercici1.Exceptions.WordWithoutDefinitionException;
 import org.junit.jupiter.api.Test;
 
 public interface EmptyDictionary {
     @Test
-    void defineNewWord() throws AlreadyDefinedException, NotDefinedException;
+    void defineNewWord() throws WordWithDefinitionException, WordWithoutDefinitionException;
 
     @Test
     void getTheWord();

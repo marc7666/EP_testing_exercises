@@ -1,7 +1,7 @@
 package Exercici1;
 
-import Exercici1.Exceptions.AlreadyDefinedException;
-import Exercici1.Exceptions.NotDefinedException;
+import Exercici1.Exceptions.WordWithDefinitionException;
+import Exercici1.Exceptions.WordWithoutDefinitionException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,12 +16,12 @@ public class DictionaryImpl implements Dictionary {
     }
 
     @Override
-    public void defineWord(String word, String definition) throws AlreadyDefinedException {
+    public void defineWord(String word, String definition) throws WordWithDefinitionException {
         List<String> definitions;
         if (dictionary.containsKey(word)) {
             definitions = dictionary.get(word);
             if (definitions.contains(definition)) {
-                throw new AlreadyDefinedException("Existing definition");
+                throw new WordWithDefinitionException("Existing definition");
             } else {
                 definitions.remove(0); //Removing the null value
                 definitions.add(definition);
@@ -35,11 +35,11 @@ public class DictionaryImpl implements Dictionary {
     }
 
     @Override
-    public List<String> getDefinitions(String word) throws NotDefinedException {
+    public List<String> getDefinitions(String word) throws WordWithoutDefinitionException {
         if (dictionary.containsKey(word)) {
             return dictionary.get(word);
         } else {
-            throw new NotDefinedException("Word not included in the dictionary");
+            throw new WordWithoutDefinitionException("Word not included in the dictionary");
         }
     }
 }
