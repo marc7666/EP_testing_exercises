@@ -1,6 +1,8 @@
 # Problem statements
 
-## Problem 1:
+## Easy problems ('independent' classes)
+
+### Problem 1:
 
 We will use the class _Dictionary_ to implement a dictionary where each word (dictionary entry) could have more than one meanings or definitions.
 
@@ -37,7 +39,7 @@ with the following specification:
   
   What other exception should be defined?
 
-## Problem 2:
+### Problem 2:
 
 Consider the class _Merger_ that contains a method to shuffle two integers lists sorted increasingly and without repeated numbers, in a single list sorted as well and that has not repeated numbers.
 
@@ -54,7 +56,7 @@ The exception is thrown when any of the arguments does not meet the precondition
 
 Define unit tests to check the correct operation of this class. 
 
-## Problem 3:
+### Problem 3:
 
 The _Receipt_ class is available that has the following methods:
 
