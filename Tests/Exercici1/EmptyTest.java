@@ -1,23 +1,36 @@
 package Exercici1;
 
+import Exercici1.Exceptions.AlreadyDefinedException;
+import Exercici1.Exceptions.NotDefinedException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
 
 public class EmptyTest implements EmptyDictionary {
     private DictionaryImpl dictionary;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         dictionary = new DictionaryImpl();
 
     }
 
     @Override
-    public void defineNewWord() {
+    @Test
+    public void defineNewWord() throws AlreadyDefinedException, NotDefinedException {
+        List<String> aux = List.of("Armed fighting between two or more countries or groups");
+        dictionary.defineWord("War", "Armed fighting between two or more countries or groups");
+        assertEquals(aux, dictionary.getDefinitions("War"));
 
     }
 
     @Override
-    public void getTheWord() {
-
+    @Test
+    public void getTheWord(){
+        assertThrows(NotDefinedException.class,
+                () -> dictionary.getDefinitions("War"));
     }
 }
