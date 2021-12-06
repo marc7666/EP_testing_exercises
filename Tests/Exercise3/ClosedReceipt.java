@@ -8,4 +8,7 @@ public interface ClosedReceipt {
 
     @Test
     void closedAddTaxesTest();
+
+    @Test
+    void getTotalTest();
 }

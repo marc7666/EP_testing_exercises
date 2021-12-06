@@ -30,4 +30,10 @@ public class ClosedReceiptTest implements ClosedReceipt{
         assertThrows(IsClosedException.class,
                 () -> receipt.addTexes(BigDecimal.valueOf(21.00)));
     }
+
+    @Override
+    @Test
+    public void getTotalTest() {
+        assertEquals(BigDecimal.valueOf(0, 2), receipt.getTotal());
+    }
 }

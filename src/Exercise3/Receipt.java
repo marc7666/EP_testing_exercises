@@ -47,7 +47,7 @@ public class Receipt implements ReceiptInterface {
         return total;
     }
 
-    protected void setClosed(boolean state){
+    protected void setClosed(boolean state) {
         this.isClosed = state;
     }
 
