@@ -10,5 +10,8 @@ public interface NotEmptyDictionary {
     void getExistentWord() throws NotDefinedException;
 
     @Test
+    void defineExistentWordWithDefinition() throws AlreadyDefinedException, NotDefinedException;
+
+    @Test
     void defineExistentWord() throws AlreadyDefinedException, NotDefinedException;
 }

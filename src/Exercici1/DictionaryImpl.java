@@ -18,15 +18,16 @@ public class DictionaryImpl implements Dictionary {
     @Override
     public void defineWord(String word, String definition) throws AlreadyDefinedException {
         List<String> definitions;
-        if (dictionary.containsKey(word)){
+        if (dictionary.containsKey(word)) {
             definitions = dictionary.get(word);
-            if (definitions.contains(definition)){
+            if (definitions.contains(definition)) {
                 throw new AlreadyDefinedException("Existing definition");
-            }else{
+            } else {
+                definitions.remove(0); //Removing the null value
                 definitions.add(definition);
                 dictionary.put(word, definitions);
             }
-        }else{
+        } else {
             definitions = new ArrayList<>();
             definitions.add(definition);
             dictionary.put(word, definitions);

@@ -17,6 +17,7 @@ public class NotEmptyTest implements NotEmptyDictionary {
     void setup() throws AlreadyDefinedException {
         dictionary = new DictionaryImpl();
         dictionary.defineWord("Car", "A road vehicle with an engine, four wheels, and seats for a small number of people");
+        dictionary.defineWord("Friend", "null");
     }
 
     @Override
@@ -28,8 +29,19 @@ public class NotEmptyTest implements NotEmptyDictionary {
 
     @Override
     @Test
-    public void defineExistentWord() {
+    public void defineExistentWordWithDefinition() {
         assertThrows(AlreadyDefinedException.class,
                 () -> dictionary.defineWord("Car", "A road vehicle with an engine, four wheels, and seats for a small number of people"));
+
     }
+
+    @Override
+    @Test
+    public void defineExistentWord() throws AlreadyDefinedException, NotDefinedException {
+        dictionary.defineWord("Friend", "A person who you know well and who you like a lot, but who is usually not a member of your family");
+        List<String> aux = List.of("A person who you know well and who you like a lot, but who is usually not a member of your family");
+        assertEquals(aux, dictionary.getDefinitions("Friend"));
+    }
+
+
 }
