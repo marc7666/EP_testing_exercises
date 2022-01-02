@@ -55,4 +55,9 @@ public class Receipt {
     protected void closeReceipt(){
         isClosed = true;
     }
+
+    public boolean isClosed() {
+        return isClosed;
+    }
+
 }
