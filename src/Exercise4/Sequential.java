@@ -5,12 +5,15 @@ import java.util.List;
 
 public class Sequential extends Composed implements Task{
 
-    public Sequential(List<Task> tasks, BigDecimal cost, int duration) {
-        super(tasks, cost, duration);
+    public Sequential() {
+        super();
     }
 
     @Override
     public int durationInDays() {
-        return 0;
+        for (Task tasks : tasks){
+            duration += tasks.durationInDays();
+        }
+        return duration;
     }
 }
