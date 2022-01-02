@@ -1,7 +1,7 @@
 package Exercise5;
 
-import Exercise3.Exceptions.IsClosedException;
-import Exercise5.Exceptions.DoesNotExistException;
+
+import Exercise5.Exceptions.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -50,5 +50,9 @@ public class Receipt {
 
     public BigDecimal getTotal() {
         return total;
+    }
+
+    protected void closeReceipt(){
+        isClosed = true;
     }
 }
