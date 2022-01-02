@@ -78,3 +78,37 @@ The specifications are the following:
 - _getTotal_ returns the total of the receipt and it can be called in any moment.
 
 Define one or more classes of test for the class _Receipt_.
+
+### Problem 4:
+
+The following classes are available that are used in a task planning system: 
+
+```java
+interface Task {
+ BigDecimal costInEuros();
+ int durationInDays();
+ }
+ 
+ public class Simple implements Task ...
+    public Simple(BigDecimal euros, int days)
+    public BigDecimal costInEuros()
+    public int durationInDays()
+
+ public abstract class Composed implements Task...
+    public void addSubtask(Task subtask)
+    public BigDecimal costInEuros()
+
+ public class Sequential extends Composed implements Task ...
+    public int durationInDays()
+
+ public class Parallel extends Composed implements Task ...
+    public int durationInDays()
+```
+
+Specifications are as follows:
+- The cost and duration of a simple task are those indicated in the constructor.
+- The addSubtask method adds a _subtask_ to a compound task.
+- In a compound task, the cost is the sum of the costs of the subtasks (to be obtained using the _costInEuros_ method).
+- In a sequential task, the duration is the sum of the durations of the subtasks (to be obtained using the _durationInDays_ method).
+- In a parallel task, the duration is the maximum of the subtask durations (_durationInDays_ method).
+Define unit tests to check the correct operation of these classes. 
