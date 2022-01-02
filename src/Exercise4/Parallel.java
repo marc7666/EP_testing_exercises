@@ -11,8 +11,9 @@ public class Parallel extends Composed implements Task {
     public int durationInDays() {
         int maxDuration = 0;
         for (Task nextEl : tasks) {
-            if (nextEl.durationInDays() > maxDuration) {
-                maxDuration = nextEl.durationInDays();
+            int dura = nextEl.durationInDays();
+            if (dura > maxDuration) {
+                maxDuration = dura;
             }
         }
         duration = maxDuration;

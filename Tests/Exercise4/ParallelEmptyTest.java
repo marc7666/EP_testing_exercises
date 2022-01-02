@@ -7,16 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 
-public class ParallelEmptyTest {
+public class ParallelEmptyTest implements SchedulingTasksInterface {
     Parallel pr;
 
-
+    @Override
     @BeforeEach
     public void setup() {
         pr = new Parallel();
     }
 
 
+    @Override
     @Test
     public void addSimpleSubtaskTest() {
         Simple s = new Simple(new BigDecimal("122.0"), 46);
@@ -30,8 +31,9 @@ public class ParallelEmptyTest {
 
     }
 
+    @Override
     @Test
-    public void test2() {
+    public void addComposedSubtaskTest() {
         Sequential s;
         Task t1, t2;
         s = new Sequential();
