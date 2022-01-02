@@ -2,7 +2,7 @@ package Exercise4;
 
 import java.math.BigDecimal;
 
-public class Simple implements Task{
+public class Simple implements Task {
     public BigDecimal euros;
     public int days;
 
@@ -13,11 +13,11 @@ public class Simple implements Task{
 
     @Override
     public BigDecimal costInEuros() {
-        return null;
+        return euros;
     }
 
     @Override
     public int durationInDays() {
-        return 0;
+        return days;
     }
 }
