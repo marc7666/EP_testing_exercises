@@ -112,3 +112,27 @@ Specifications are as follows:
 - In a sequential task, the duration is the sum of the durations of the subtasks (to be obtained using the _durationInDays_ method).
 - In a parallel task, the duration is the maximum of the subtask durations (_durationInDays_ method).
 Define unit tests to check the correct operation of these classes. 
+
+## Problems using doubles
+
+### Problem 5
+
+Problem 3 presented a Receipt class that was unrealistic since, normally, the information on prices and description of the products would reside in a database, which is accessed by the product identifier. 
+
+Therefore, the new version will have the form: 
+
+```java
+public class Receipt
+ private ProductsDB = new ProductsDB();
+ public void addLine(String productID, int numUnits) throws IsClosedException, DoesNotExistException
+ public void addTaxes(BigDecimal percent) throws IsClosedException
+```
+
+What we want is to be able to test this version of the _Receipt_ class independently of the database (you can reference it _ProductDB_). Modify and / or add what is necessary to be able to test the Receipt class independently and develop a set of tests that test its functionality.
+The operation in which we are interested in the database is:
+```java
+public BigDecimal getPrice (String productID) throws DoesNotExistException;
+```
+Now the new version of _addLine_ also throws _DoesNotExistException_ when it is passed a product identifier that does not exist in the DB.
+
+Define unit tests for the _Receipt_ class defined here. 
