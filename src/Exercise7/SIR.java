@@ -3,8 +3,8 @@ package Exercise7;
 public class SIR {
     public static int K = 1;
     public static double INFECTIONPROBABILITY = 0.01;
-    public State state = State.SUSCPETIBLE;
-    RandomInt random;
+    private State state;
+    public RandomInt random;
 
     public enum State {
         SUSCPETIBLE,
@@ -12,21 +12,14 @@ public class SIR {
         RECOVERED
     }
 
-    public SIR(int k) {
-        K = k;
+    public SIR() {
+        this.state = State.SUSCPETIBLE;
     }
 
     public State getState() {
         return state;
     }
 
-    public void setK(int k) {
-        K = k;
-    }
-
-    public static void setpP(double newProbability) {
-        SIR.INFECTIONPROBABILITY = newProbability;
-    }
 
     public void step() {
         double pP = random.nextPP();
@@ -43,5 +36,9 @@ public class SIR {
                 }
                 break;
         }
+    }
+
+    public void setRandom(RandomInt random) {
+        this.random = random;
     }
 }
