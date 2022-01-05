@@ -7,7 +7,7 @@ public class Cell {
     public static double PBURN = 0.00006;
     public static double PGROWTH = 0.01;
     private State state;
-    private RandomIntf random;
+    public RandomIntf random;
 
     public enum State {
         EMPTY,
@@ -41,5 +41,9 @@ public class Cell {
                 state = State.EMPTY;
                 break;
         }
+    }
+
+    public void setRandom(RandomIntf random) {
+        this.random = random;
     }
 }

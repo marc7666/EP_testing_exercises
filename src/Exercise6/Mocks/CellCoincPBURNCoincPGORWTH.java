@@ -4,7 +4,7 @@ import Exercise6.RandomIntf;
 
 import static Exercise6.Cell.*;
 
-public class RandomValuesConstants implements RandomIntf {
+public class CellCoincPBURNCoincPGORWTH implements RandomIntf {
 
     @Override
     public double nextPBURN() {
