@@ -136,3 +136,49 @@ public BigDecimal getPrice (String productID) throws DoesNotExistException;
 Now the new version of _addLine_ also throws _DoesNotExistException_ when it is passed a product identifier that does not exist in the DB.
 
 Define unit tests for the _Receipt_ class defined here. 
+
+### Problem 6
+
+The FFM (Forest-Fire Model) simulates the evolution of a fire in a certain area 1. The FFM model consists of a grid of cells that can have three possible states:
+* empty
+* occupied by a tree
+* Burning
+
+The evolution of the system over time is determined by four rules running concurrently:
+1. A burning cell becomes an empty space
+2. A tree will burn if at least one neighboring tree is burning 
+3. A tree starts to burn with probability f, even if it does not have no neighbor on fire
+4. A tree sprouts in an empty space with probability p
+
+We will focus on the Cell class, which will represent each of cells in the grid. Each cell knows the state in which it is finds and is responsible for managing transitions. 
+
+* The class will store two constants (static members) of type double, which will be the probabilities of spontaneous combustion and the birth of a tree. 
+* The constructor of this class will have no parameters, since the cells will be initially empty.
+* The class will offer a method to know the state in which it is find a cell: 
+
+```java
+State getState()
+```
+
+* In addition, we will have a method that will make the cell change state according to the rules. This method will receive an additional parameter to indicate if any neighboring cells are burning: 
+
+```java
+public void step(boolean hasBurningNeighbour)
+```
+
+The class, internally, uses an instance of the java.util.Random class to generate random numbers for both probabilities. You will have to substitute it (substitute class) to be able to do the pertinent tests. To make the tests easier, you can decide how you would like the object that will be used to make the random decisions to be used (basically decide an interface with the methods that you would like it to have to generate both probabilities). These methods will serve both to implement the functionality in the application and to be substituted in the class that does double in the tests. 
+
+### Problem 7
+
+Another model similar to the previous one is used to simulate the spread of a disease (yes, you can also use it to model a zombie apocalypse, setting the probability of recovery to 0). The model, known as SIR (Susceptible-Infected-Recovered) is as follows: 
+
+* Each individual can be in three possible states: S, I, R 
+* Susceptible individuals can become infected spontaneously with probability p 
+* Once infected, it takes K days to recover 
+* The disease generates immunization, so an individual recovered no longer becomes infected again
+
+Based on the class structure in Problem 6, define tests to check that the state of the individuals evolves in the correct way. The method in question will be: 
+
+```java
+public void step()
+```
