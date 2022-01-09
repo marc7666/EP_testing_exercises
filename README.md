@@ -2,7 +2,7 @@
 
 ## Easy problems ('independent' classes)
 
-### Problem 1:
+### Statement 1:
 
 We will use the class _Dictionary_ to implement a dictionary where each word (dictionary entry) could have more than one meanings or definitions.
 
@@ -39,7 +39,7 @@ with the following specification:
   
   What other exception should be defined?
 
-### Problem 2:
+### Statement 2:
 
 Consider the class _Merger_ that contains a method to shuffle two integers lists sorted increasingly and without repeated numbers, in a single list sorted as well and that has not repeated numbers.
 
@@ -56,7 +56,7 @@ The exception is thrown when any of the arguments does not meet the precondition
 
 Define unit tests to check the correct operation of this class. 
 
-### Problem 3:
+### Statement 3:
 
 The _Receipt_ class is available that has the following methods:
 
@@ -79,7 +79,7 @@ The specifications are the following:
 
 Define one or more classes of test for the class _Receipt_.
 
-### Problem 4:
+### Statement 4:
 
 The following classes are available that are used in a task planning system: 
 
@@ -113,19 +113,20 @@ Specifications are as follows:
 - In a parallel task, the duration is the maximum of the subtask durations (_durationInDays_ method).
 Define unit tests to check the correct operation of these classes. 
 
-## Problems using doubles
+## Cases using double tests
 
-### Problem 5
+### Statement 5
 
 Problem 3 presented a Receipt class that was unrealistic since, normally, the information on prices and description of the products would reside in a database, which is accessed by the product identifier. 
 
 Therefore, the new version will have the form: 
 
 ```java
-public class Receipt
+public class Receipt{
  private ProductsDB = new ProductsDB();
  public void addLine(String productID, int numUnits) throws IsClosedException, DoesNotExistException
  public void addTaxes(BigDecimal percent) throws IsClosedException
+}
 ```
 
 What we want is to be able to test this version of the _Receipt_ class independently of the database (you can reference it _ProductDB_). Modify and / or add what is necessary to be able to test the Receipt class independently and develop a set of tests that test its functionality.
@@ -137,7 +138,7 @@ Now the new version of _addLine_ also throws _DoesNotExistException_ when it is 
 
 Define unit tests for the _Receipt_ class defined here. 
 
-### Problem 6
+### Statement 6
 
 The FFM (Forest-Fire Model) simulates the evolution of a fire in a certain area 1. The FFM model consists of a grid of cells that can have three possible states:
 * empty
@@ -168,7 +169,7 @@ public void step(boolean hasBurningNeighbour)
 
 The class, internally, uses an instance of the java.util.Random class to generate random numbers for both probabilities. You will have to substitute it (substitute class) to be able to do the pertinent tests. To make the tests easier, you can decide how you would like the object that will be used to make the random decisions to be used (basically decide an interface with the methods that you would like it to have to generate both probabilities). These methods will serve both to implement the functionality in the application and to be substituted in the class that does double in the tests. 
 
-### Problem 7
+### Statement 7
 
 Another model similar to the previous one is used to simulate the spread of a disease (yes, you can also use it to model a zombie apocalypse, setting the probability of recovery to 0). The model, known as SIR (Susceptible-Infected-Recovered) is as follows: 
 
@@ -182,3 +183,52 @@ Based on the class structure in Problem 6, define tests to check that the state 
 ```java
 public void step()
 ```
+
+### Statement 8
+
+Suppose that to the Receipt class of Problem 5 we add a method to print the receipt with the following header: 
+
+```java 
+printReceipt() throws DoesNotExistException, IsNotClosedException {}
+```
+where _IsNotClosedException_ it is launched if an attempt is made to apply on an unopened receipt.
+
+To do this, the Receipt class depends on the ReceiptPrinter class, which has five methods:
+
+```java
+public void init();
+public void addProduct(String description, int quantity, BigDecimal price);
+public void addTaxes(BigDecimal taxes);
+public void print(BigDecimal total);
+public String getOutput();
+```
+
+Let's see the behavior of the operations (they are very simplified compared to a real case, since we do not consider alignments, etc, etc): 
+
+* _init_ adds the header of the receipt which, for simplicity, consists of the string "Acme S.A." and a line break. 
+* _addProduct_ adds a product line. For each product, the three fields passed as arguments (description, quantity and price) are printed, transformed into Strings if necessary, and separated by tabs. Of course, it will be invoked as many times as there are lines in Receipt.
+* _addTaxes_ adds a line with the text "TAXES", a tab and the value of the taxes. 
+* _print_ adds a line with the text "----------", and then another line with the text "TOTAL", a tab and the total value, including taxes. 
+* _getOutput_ returns the resulting text string. 
+
+To do the tests, you will replace the ReceiptPrinter class with a double one, so that the test can check what has been printed. The description and price of a product will be obtained from the database (ProductsDB), to be treated appropriately. We will assume that ProductsDB has the following method: 
+
+```java
+public ProductDTO getProduct(String productID) {}
+```
+
+which returns an instance of the following ProductDTO class:
+
+```java
+public class ProductDTO {
+ private String productID;
+ private String description;
+ private BigDecimal price;
+
+ // getters and setters
+}
+```
+
+to get all the necessary information about a product. 
+
+Define unit tests for the Receipt class defined here.
