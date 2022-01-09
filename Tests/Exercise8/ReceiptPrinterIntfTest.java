@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public interface ReceiptPrinterIntfTest {
 
     @BeforeEach
-    void setup();
+    void setup() throws DoesNotExistException, IsClosedException;
 
     @Test
     void printTest() throws DoesNotExistException, IsNotClosedException, IsClosedException;
