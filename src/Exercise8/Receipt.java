@@ -14,11 +14,17 @@ public class Receipt {
     private boolean isClosed;
     private List<ReceiptLine> products;
     private ReceiptPrinter rP;
+    private BigDecimal taxes;
 
     public Receipt() {
         this.isClosed = false;
         this.total = new BigDecimal("0.00");
+        this.taxes = new BigDecimal("0.00");
         this.products = new ArrayList<>();
+    }
+
+    public void setrP(ReceiptPrinter rP) {
+        this.rP = rP;
     }
 
     public void setProdDB(ProductsDB prodDB) {
@@ -44,9 +50,14 @@ public class Receipt {
             BigDecimal cent = new BigDecimal("100.0");
             total = total.add(total.multiply(percent).divide(cent, 2, RoundingMode.CEILING));
             // .divide(divisor, num of decimals, rounding mode -> CEILING = Rounds to positive infinity);
+            total = total.add(taxes);
             isClosed = true;
         }
 
+    }
+
+    public BigDecimal getTaxes() {
+        return taxes;
     }
 
     public BigDecimal getTotal() {
@@ -65,14 +76,18 @@ public class Receipt {
         if (!isClosed) {
             throw new IsNotClosedException("The receipt hasn't been closed");
         } else {
+            rP.init();
             for (ReceiptLine line : products) {
                 String id = line.getProductID();
                 int units = line.getUnits();
                 Product prod = prodDB.getProduct(id);
                 rP.addProduct(prod.getDescription(), units, prod.getPrice());
             }
+            rP.addTaxes(taxes);
+            rP.print(total);
         }
 
     }
+
 
 }
