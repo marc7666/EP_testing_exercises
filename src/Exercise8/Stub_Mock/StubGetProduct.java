@@ -1,4 +1,4 @@
-package Exercise8.Stub;
+package Exercise8.Stub_Mock;
 
 import Exercise8.Exceptions.DoesNotExistException;
 import Exercise8.ProductsDB;
