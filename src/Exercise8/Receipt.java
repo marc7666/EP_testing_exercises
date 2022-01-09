@@ -36,7 +36,7 @@ public class Receipt {
             throw new IsClosedException("Receipt closed");
         } else {
             ReceiptLine line = new ReceiptLine(numUnits, productID);
-            Product price = prodDB.getProduct(productID);
+            ProductDTO price = prodDB.getProduct(productID);
             products.add(line);
             total = total.add(price.getPrice().multiply(BigDecimal.valueOf(line.getUnits())));
         }
@@ -80,7 +80,7 @@ public class Receipt {
             for (ReceiptLine line : products) {
                 String id = line.getProductID();
                 int units = line.getUnits();
-                Product prod = prodDB.getProduct(id);
+                ProductDTO prod = prodDB.getProduct(id);
                 rP.addProduct(prod.getDescription(), units, prod.getPrice());
             }
             rP.addTaxes(taxes);

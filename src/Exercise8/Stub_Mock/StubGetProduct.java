@@ -1,22 +1,22 @@
 package Exercise8.Stub_Mock;
 
 import Exercise8.Exceptions.DoesNotExistException;
-import Exercise8.Product;
+import Exercise8.ProductDTO;
 import Exercise8.ProductsDB;
 
 import java.math.BigDecimal;
 
 public class StubGetProduct implements ProductsDB {
-    private Product p1;
-    private Product p2;
+    private ProductDTO p1;
+    private ProductDTO p2;
 
     public StubGetProduct() {
-        this.p1 = new Product("Peripheral input element", "Mouse", new BigDecimal("60.00"));
-        this.p2 = new Product("Peripheral output element", "Display", new BigDecimal("160.00"));
+        this.p1 = new ProductDTO("Peripheral input element", "Mouse", new BigDecimal("60.00"));
+        this.p2 = new ProductDTO("Peripheral output element", "Display", new BigDecimal("160.00"));
     }
 
     @Override
-    public Product getProduct(String productID) throws DoesNotExistException {
+    public ProductDTO getProduct(String productID) throws DoesNotExistException {
         if (productID.equals("Mouse")) {
             return p1;
         } else if (productID.equals("Display")) {
