@@ -1,7 +1,7 @@
 package Exercise8;
 
 
-import Exercise5.Exceptions.*;
+import Exercise8.Exceptions.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -58,6 +58,13 @@ public class Receipt {
 
     public boolean isClosed() {
         return isClosed;
+    }
+
+    public void printReceipt() throws DoesNotExistException, IsNotClosedException {
+        if (!isClosed) {
+            throw new IsNotClosedException("The receipt hasn't been closed");
+        }
+
     }
 
 }
