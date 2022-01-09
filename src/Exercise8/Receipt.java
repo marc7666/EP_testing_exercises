@@ -13,6 +13,7 @@ public class Receipt {
     private BigDecimal total;
     private boolean isClosed;
     private List<ReceiptLine> products;
+    private ReceiptPrinter rP;
 
     public Receipt() {
         this.isClosed = false;
@@ -29,9 +30,9 @@ public class Receipt {
             throw new IsClosedException("Receipt closed");
         } else {
             ReceiptLine line = new ReceiptLine(numUnits, productID);
-            BigDecimal price = prodDB.getPrice(productID);
+            Product price = prodDB.getProduct(productID);
             products.add(line);
-            total = total.add(price.multiply(BigDecimal.valueOf(line.getUnits())));
+            total = total.add(price.getPrice().multiply(BigDecimal.valueOf(line.getUnits())));
         }
 
     }
@@ -63,6 +64,13 @@ public class Receipt {
     public void printReceipt() throws DoesNotExistException, IsNotClosedException {
         if (!isClosed) {
             throw new IsNotClosedException("The receipt hasn't been closed");
+        } else {
+            for (ReceiptLine line : products) {
+                String id = line.getProductID();
+                int units = line.getUnits();
+                Product prod = prodDB.getProduct(id);
+                rP.addProduct(prod.getDescription(), units, prod.getPrice());
+            }
         }
 
     }
