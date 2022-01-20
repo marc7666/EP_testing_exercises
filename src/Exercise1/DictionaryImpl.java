@@ -1,5 +1,10 @@
 package Exercise1;
 
+/**
+ * @project: EP_testing_exercises.
+ * @author: mcr99 on 21/01/2022.
+ */
+
 import Exercise1.Exceptions.DefinedException;
 import Exercise1.Exceptions.NotDefinedException;
 

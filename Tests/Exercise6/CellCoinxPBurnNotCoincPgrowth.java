@@ -1,5 +1,10 @@
 package Exercise6;
 
+/**
+ * @project: EP_testing_exercises.
+ * @author: mcr99 on 21/01/2022.
+ */
+
 import Exercise6.Mocks.RandomNotEqualsPGROWTHDefined;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

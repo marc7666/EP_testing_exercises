@@ -1,5 +1,10 @@
 package Exercise3;
 
+/**
+ * @project: EP_testing_exercises.
+ * @author: mcr99 on 21/01/2022.
+ */
+
 
 import Exercise3.Exceptions.IsClosedException;
 

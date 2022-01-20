@@ -2,6 +2,11 @@ package Exercise8.Stub_Mock;
 
 import Exercise8.ReceiptPrinter;
 
+/**
+ * @project: EP_testing_exercises.
+ * @author: mcr99 on 21/01/2022.
+ */
+
 import java.math.BigDecimal;
 
 public class MockReceiptPrinter implements ReceiptPrinter {

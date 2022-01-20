@@ -1,5 +1,10 @@
 package Exercise4;
 
+/**
+ * @project: EP_testing_exercises.
+ * @author: mcr99 on 21/01/2022.
+ */
+
 
 public class Parallel extends Composed implements Task {
 

@@ -1,5 +1,10 @@
 package Exercise7;
 
+/**
+ * @project: EP_testing_exercises.
+ * @author: mcr99 on 21/01/2022.
+ */
+
 public class SIR {
     public static int K = 1;
     public static double INFECTIONPROBABILITY = 0.01;

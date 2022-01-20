@@ -1,5 +1,10 @@
 package Exercise6;
 
+/**
+ * @project: EP_testing_exercises.
+ * @author: mcr99 on 21/01/2022.
+ */
+
 import javax.swing.plaf.nimbus.State;
 import java.util.Random;
 

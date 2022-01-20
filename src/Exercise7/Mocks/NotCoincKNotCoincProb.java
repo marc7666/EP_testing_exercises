@@ -1,5 +1,10 @@
 package Exercise7.Mocks;
 
+/**
+ * @project: EP_testing_exercises.
+ * @author: mcr99 on 21/01/2022.
+ */
+
 import Exercise7.RandomInt;
 
 public class NotCoincKNotCoincProb implements RandomInt {
